@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Calendar</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .navbar .menu a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Calendar section */
+        .calendar {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .calendar-cell {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .event-marker {
+            background-color: #007BFF;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+        }
+
+        /* Event form */
+        .event-form {
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .event-form input {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+
+        .event-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .event-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Events list */
+        .events-list {
+            padding: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .events-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .events-list li {
+            background-color: white;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <h1>Family Coordination App</h1>
+        <nav class="menu">
+            <a href="/">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="calendar">
+            <h2>Shared Calendar</h2>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="event-form">
+                <h3>Add Event</h3>
+                <input type="date" id="eventDate" required>
+                <input type="text" id="eventTitle" placeholder="Event Title" required>
+                <button onclick="addEvent()">Add Event</button>
+            </div>
+        </section>
+
+        <section class="events-list">
+            <h3>Upcoming Events</h3>
+            <ul id="eventList"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Family Coordination App. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const calendarGrid = document.getElementById('calendarGrid');
+        const eventList = document.getElementById('eventList');
+
+        // Mock data for demonstration
+        const events = [
+            { date: '2025-01-10', title: 'Family Dinner' },
+            { date: '2025-01-15', title: 'School Meeting' },
+            { date: '2025-01-20', title: 'Vacation' },
+        ];
+
+        // Function to render calendar grid
+        function renderCalendar() {
+            const today = new Date();
+            const monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+            const monthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            const daysInMonth = monthEnd.getDate();
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const cell = document.createElement('div');
+                cell.classList.add('calendar-cell');
+                cell.textContent = day;
+
+                const date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const event = events.find(e => e.date === date);
+
+                if (event) {
+                    const eventMarker = document.createElement('span');
+                    eventMarker.textContent = event.title;
+                    eventMarker.classList.add('event-marker');
+                    cell.appendChild(eventMarker);
+                }
+
+                calendarGrid.appendChild(cell);
+            }
+        }
+
+        // Function to add a new event
+        function addEvent() {
+            const eventDate = document.getElementById('eventDate').value;
+            const eventTitle = document.getElementById('eventTitle').value;
+
+            if (eventDate && eventTitle) {
+                events.push({ date: eventDate, title: eventTitle });
+                renderEventList();
+                alert('Event added successfully!');
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+
+        // Function to render the event list
+        function renderEventList() {
+            eventList.innerHTML = '';
+            events.forEach(event => {
+                const li = document.createElement('li');
+                li.textContent = `${event.date}: ${event.title}`;
+                eventList.appendChild(li);
+            });
+        }
+
+        // Initialize
+        renderCalendar();
+        renderEventList();
+    </script>
+</body>
+
+</html>

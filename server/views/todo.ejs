@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .navbar .menu a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Todo List Section */
+        .todo-list {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .todo-input {
+            margin-bottom: 20px;
+        }
+
+        .todo-input input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        .todo-input button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .todo-input button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Todo List Items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .todo-item {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .todo-item span {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .todo-item span.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .todo-item button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .todo-item button:hover {
+            background-color: darkred;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <h1>To-Do List</h1>
+        <nav class="menu">
+            <a href="/">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="todo-list">
+            <h2>Your To-Do List</h2>
+
+            <!-- To-Do Input Form -->
+            <div class="todo-input">
+                <input type="text" id="todoText" placeholder="Enter new task" required>
+                <button onclick="addTodo()">Add Task</button>
+            </div>
+
+            <!-- To-Do List -->
+            <ul id="todoItems">
+                <!-- List items will be populated here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 To-Do List App. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const todoItems = document.getElementById('todoItems');
+        const todoText = document.getElementById('todoText');
+
+        let todos = []; // Array to store todo tasks
+
+        // Function to render To-Do list
+        function renderTodos() {
+            todoItems.innerHTML = '';
+            todos.forEach((todo, index) => {
+                const li = document.createElement('li');
+                li.classList.add('todo-item');
+
+                const taskText = document.createElement('span');
+                taskText.textContent = todo.text;
+                if (todo.completed) {
+                    taskText.classList.add('completed');
+                }
+
+                // Mark task as completed
+                taskText.onclick = function () {
+                    todos[index].completed = !todos[index].completed;
+                    renderTodos();
+                };
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.onclick = function () {
+                    todos.splice(index, 1);
+                    renderTodos();
+                };
+
+                li.appendChild(taskText);
+                li.appendChild(deleteBtn);
+                todoItems.appendChild(li);
+            });
+        }
+
+        // Function to add a new task
+        function addTodo() {
+            const text = todoText.value.trim();
+            if (text) {
+                todos.push({ text: text, completed: false });
+                todoText.value = '';
+                renderTodos();
+            } else {
+                alert('Please enter a task!');
+            }
+        }
+
+        // Initial render
+        renderTodos();
+    </script>
+</body>
+
+</html>

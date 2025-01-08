@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Coordination Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #eef2f3;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #c1eaff, #d8d8f2);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .hero-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons {
+            margin-top: 1.5rem;
+        }
+
+        .hero-buttons a {
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background-color: #4facfe;
+            color: white;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            margin: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .hero-buttons a:hover {
+            background-color: #00f2fe;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        .social-icons i {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .social-icons i:hover {
+            color: #ffd700;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #d8d8f2;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons a {
+            padding: 1rem 2rem;
+            background-color: #4facfe;
+            color: white;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-buttons a:hover {
+            background-color: #00f2fe;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Family Coordination Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li><a href="/groupchat">Group Chat</a></li>
+                <li><a href="/todo">To-Do List</a></li>
+                <li><a href="/settings">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <h2>Simplify Your Family Coordination</h2>
+        <p>Stay connected with family, organize your events, manage tasks, and chat all in one place!</p>
+        <div class="hero-buttons">
+            <a href="/calendar">Start a Family Calendar</a>
+            <a href="/groupchat">Join a Group Chat</a>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>📆 Shared Calendar</h3>
+            <p>Plan family events, appointments, and activities all in one place. Never miss an important event again!
+            </p>
+            <a href="/calendar">View Calendar</a>
+        </div>
+        <div class="feature-card">
+            <h3>💬 Group Chat</h3>
+            <p>Stay connected with family members, share updates, and coordinate plans easily.</p>
+            <a href="/groupchat">Join Chat</a>
+        </div>
+        <div class="feature-card">
+            <h3>📋 Task Management</h3>
+            <p>Assign tasks, track progress, and stay organized with your to-do lists.</p>
+            <a href="/todo">Manage Tasks</a>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h3>Join Us and Make Family Coordination Easier!</h3>
+        <p>Start organizing your family life in a more connected way with our app.</p>
+        <div class="cta-buttons">
+            <a href="/signup">Sign Up Now</a>
+            <a href="/login">Log In</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Family Coordination Hub | All rights reserved.</p>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+        </div>
+    </footer>
+
+</body>
+
+</html>

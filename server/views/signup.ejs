@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+
+<body>
+    <h1>Sign Up</h1>
+    <div id="app">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="signUp()">Sign Up</button>
+        <p id="signup-message"></p>
+        <p>Already have an account? <a href="/login">Log In</a></p> <!-- Updated to point to the correct route -->
+    </div>
+    <script src="/script.js"></script> <!-- Adjusted path for EJS -->
+</body>
+
+</html>

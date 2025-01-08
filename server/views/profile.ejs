@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .navbar .menu a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        /* Profile Picture */
+        .profile-picture {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-picture img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-picture button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .profile-picture button:hover {
+            background-color: #0056b3;
+        }
+
+        /* User Details */
+        .user-details p {
+            margin: 5px 0;
+        }
+
+        .user-details strong {
+            font-weight: bold;
+        }
+
+        /* Update Profile Form */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin-top: 10px;
+        }
+
+        form input {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <h1>User Profile</h1>
+        <nav class="menu">
+            <a href="/">Home</a>
+            <a href="/chat">Group Chat</a>
+            <a href="/profile">Profile</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-container">
+            <h2>Profile Details</h2>
+
+            <div class="profile-info">
+                <!-- Profile Picture -->
+
+
+                <!-- User Info -->
+                <div class="user-details">
+                    <p><strong>Name:</strong>
+                        ravindra
+                    </p>
+                    <p><strong>Email:</strong>
+                        abcd@gamil.com
+                    </p>
+                </div>
+
+                <!-- Update Profile Form -->
+                <h3>Update Profile</h3>
+                <form id="updateProfileForm" action="/update-profile" method="POST" enctype="multipart/form-data">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="name" required>
+                    <br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="name" required>
+                    <br>
+
+                    <label for="profilePicture">Profile Picture:</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                    <br>
+
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 User Profile App. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function changePicture() {
+            const fileInput = document.getElementById('profilePicture');
+            fileInput.click();
+        }
+    </script>
+</body>
+
+</html>
